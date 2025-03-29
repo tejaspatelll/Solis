@@ -1,0 +1,20 @@
+{
+  "name": "Solis Hifi",
+  "short_name": "Solis",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#000",
+  "icons": [
+    {
+      "src": "2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
