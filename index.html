@@ -1872,7 +1872,7 @@
     <script>
  // Function to detect if the device is mobile
         function isMobileDevice() {
-            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+            return window.innerWidth <= 768;
         }
 
         // Check if the device is mobile
@@ -1880,6 +1880,7 @@
             // Only include the div if the device is not mobile (i.e., it's a desktop)
             var appContainerDiv = document.createElement('div');
             appContainerDiv.className = 'app-container';
+            appContainerDiv.innerHTML = 'This is the app container'; // Example content
             document.body.appendChild(appContainerDiv);
         }
 
