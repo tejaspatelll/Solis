@@ -1871,21 +1871,8 @@
 
 
     <script>
- // Function to detect if the device is mobile
-        function isMobileDevice() {
-           
-               const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-    return isPortrait;
-        }
 
-        // Check if the device is mobile
-        if (!isMobileDevice()) {
-            // Only include the div if the device is not mobile (i.e., it's a desktop)
-            var appContainerDiv = document.createElement('div');
-            appContainerDiv.className = 'app-container';
-            appContainerDiv.innerHTML = 'This is the app container'; // Example content
-            document.body.appendChild(appContainerDiv);
-        }
+        
 
 if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
