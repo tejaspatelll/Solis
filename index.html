@@ -1232,8 +1232,7 @@
 </head>
 <body id="app-body"> <!-- Added ID for dark mode toggling -->
 
-      <!-- App Container   -->
-      <div class="app-container">  
+     
         <!-- Status Bar -->
     
 
@@ -1868,11 +1867,21 @@
              </div>
          </div>
 
- </div>  
-<!--   End App Container -->
+
 
     <script>
+ // Function to detect if the device is mobile
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
 
+        // Check if the device is mobile
+        if (!isMobileDevice()) {
+            // Only include the div if the device is not mobile (i.e., it's a desktop)
+            var appContainerDiv = document.createElement('div');
+            appContainerDiv.className = 'app-container';
+            document.body.appendChild(appContainerDiv);
+        }
 
 if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
