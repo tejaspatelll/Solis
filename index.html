@@ -90,37 +90,81 @@
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         html, body { height: 100%; font-family: var(--font-family); background-color: #e0e5ec; display: flex; justify-content: center; align-items: center; color: var(--text-secondary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-        /* --- App Container --- */
+            /* --- App Container --- */
+    .app-container {
+        width: 100%; /* Make it full width */
+        height: 100%; /* Make it full height */
+        max-width: 390px; /* iPhone width */
+        max-height: 844px; /* iPhone height */
+        background-color: var(--bg-primary);
+        border-radius: 0; /* Remove border radius */
+        box-shadow: none; /* Remove shadow */
+        overflow: auto; /* Enable scrolling if content overflows */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border: none; /* Remove border */
+        backdrop-filter: none; /* Remove backdrop filter */
+    }
+
+    /* Apply iPhone styling only on larger screens */
+    @media (min-width: 768px) {
         .app-container {
             width: 390px;
             height: 844px;
-            background-color: var(--bg-primary);
             border-radius: 55px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
             border: 14px solid #1C1C1E;
             backdrop-filter: blur(20px);
+            overflow: hidden; /* Keep overflow hidden for iPhone look */
         }
-        .app-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 30px;
-            background-color: #1C1C1E;
-            border-bottom-left-radius: 18px;
-            border-bottom-right-radius: 18px;
-            z-index: 50;
-        }
+    }
 
+    .app-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 30px;
+        background-color: #1C1C1E;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        z-index: 50;
+    }
+
+    /* Hide the notch on smaller screens */
+    @media (max-width: 767px) {
+        .app-container::before {
+            display: none;
+        }
+    }
         /* --- Screen Styling --- */
-        .screen { display: none; flex-direction: column; padding: 20px 20px 20px 20px; flex-grow: 1; overflow-y: auto; overflow-x: hidden; background-color: var(--bg-primary); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.3s ease-in-out; }
-        .screen.active { display: flex; opacity: 1; z-index: 10; }
+    /* --- Screen Styling --- */
+    .screen {
+        display: none;
+        flex-direction: column;
+        padding: 20px;
+        flex-grow: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: var(--bg-primary);
+        position: relative; /* Changed from absolute */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        box-sizing: border-box; /* Ensure padding is included in width/height */
+    }
+
+    .screen.active {
+        display: flex;
+        opacity: 1;
+        z-index: 10;
+    }
         .screen::-webkit-scrollbar { display: none; }
         .screen { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -1232,8 +1276,8 @@
 </head>
 <body id="app-body"> <!-- Added ID for dark mode toggling -->
 
-           <!-- App Container  
-      <div class="app-container">  -->
+      <!-- App Container  -->
+      <div class="app-container">   
         <!-- Status Bar -->
     
 
@@ -1867,12 +1911,12 @@
                  <div class="modal-footer"><button class="btn" onclick="closeModal('privacy-modal')">Close</button></div>
              </div>
          </div>
-      <!--   </div>      -->
 
+ </div>  
+ <!--  End App Container -->
 
     <script>
 
-        
 
 if ('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
