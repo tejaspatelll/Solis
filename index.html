@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>Solis Enhanced Prototype v2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,6 +253,15 @@
         .terms-link a { color: var(--text-accent); font-weight: 600; }
         .signin-link { margin-top: 25px; text-align: center; font-size: 0.95em; }
         .signin-link a { font-weight: 600; }
+
+
+#fullscreen {
+  height: 100dvh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
         /* Dashboard Screen - Updated Layout */
         #dashboard-screen .welcome-text { color: var(--text-secondary); font-size: 1.0em; margin-bottom: 25px; }
