@@ -4,6 +4,8 @@
 
 **Solis Enhanced Prototype v2** is a modern, interactive web application simulating an iPhone-style user interface. It is designed for demonstration and prototyping purposes only. All intellectual property rights are strictly reserved; copying, reproducing, or reusing any part of this design, code, or visual assets is expressly prohibited.
 
+Check out Prototype : https://tejaspatelll.github.io/Solis/
+
 ---
 
 ## Features
