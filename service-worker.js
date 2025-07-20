@@ -27,6 +27,24 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
+      // For HTML requests, try network first, fallback to cache
+      if (event.request.headers.get('accept').includes('text/html')) {
+        return fetch(event.request)
+          .then(networkResponse => {
+            // Cache the fresh response
+            const responseClone = networkResponse.clone();
+            caches.open(cacheName).then(cache => {
+              cache.put(event.request, responseClone);
+            });
+            return networkResponse;
+          })
+          .catch(() => {
+            // Fallback to cached version if network fails
+            return response;
+          });
+      }
+      
+      // For other resources, use cache-first strategy
       return response || fetch(event.request);
     })
   );

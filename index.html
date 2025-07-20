@@ -2077,7 +2077,10 @@ if ('serviceWorker' in navigator) {
             };
 
             if (elements.kwhValue) elements.kwhValue.textContent = data.kwh;
-            if (elements.efficiencyValue) elements.efficiencyValue.innerHTML = `${data.efficiency}<span class="percent-sign">%</span> <span style="font-size: 0.5em; margin-top: 2px;">Efficiency</span>`;
+            if (elements.efficiencyValue) {
+                elements.efficiencyValue.textContent = `${data.efficiency}%`;
+                // Add efficiency label as a separate element or use CSS pseudo-elements
+            }
             if (elements.suntimeValue) elements.suntimeValue.textContent = data.suntime;
             if (elements.avgEnergyValue) elements.avgEnergyValue.textContent = data.avgEnergy;
             if (elements.progressCircle) elements.progressCircle.style.setProperty('--progress-value', `${data.efficiency}%`);
@@ -2222,7 +2225,13 @@ if ('serviceWorker' in navigator) {
             
             if (!button || !freq || !time) return;
             
-            appSettings.autoSchedule.frequency = parseInt(freq, 10);
+            const frequency = parseInt(freq, 10);
+            if (isNaN(frequency) || frequency < 1 || frequency > 365) {
+                console.error('Invalid frequency value:', freq);
+                return;
+            }
+            
+            appSettings.autoSchedule.frequency = frequency;
             appSettings.autoSchedule.time = time;
 
              button.classList.add('btn-loading');
