@@ -1,12 +1,9 @@
 const cacheName = 'solis-hifi-cache-v1';
 const staticAssets = [
   './',
-  './index.html', // Or Solis_hifi.html
-  './Solis_hifi.html',
-  './style.css',   // Or your CSS file
-  './script.js',  // Or your JS file
-  './icon-192.png',
-  './icon-512.png'
+  './index.html',
+  './manifest.json',
+  './2.png'
 ];
 
 self.addEventListener('install', async event => {

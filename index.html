@@ -2077,7 +2077,23 @@ if ('serviceWorker' in navigator) {
             };
 
             if (elements.kwhValue) elements.kwhValue.textContent = data.kwh;
-            if (elements.efficiencyValue) elements.efficiencyValue.innerHTML = `${data.efficiency}<span class="percent-sign">%</span> <span style="font-size: 0.5em; margin-top: 2px;">Efficiency</span>`;
+            if (elements.efficiencyValue) {
+                // Safely set efficiency value without innerHTML to prevent XSS
+                elements.efficiencyValue.textContent = '';
+                const efficiencyText = document.createTextNode(data.efficiency);
+                const percentSpan = document.createElement('span');
+                percentSpan.className = 'percent-sign';
+                percentSpan.textContent = '%';
+                const labelSpan = document.createElement('span');
+                labelSpan.style.fontSize = '0.5em';
+                labelSpan.style.marginTop = '2px';
+                labelSpan.textContent = 'Efficiency';
+                
+                elements.efficiencyValue.appendChild(efficiencyText);
+                elements.efficiencyValue.appendChild(percentSpan);
+                elements.efficiencyValue.appendChild(document.createTextNode(' '));
+                elements.efficiencyValue.appendChild(labelSpan);
+            }
             if (elements.suntimeValue) elements.suntimeValue.textContent = data.suntime;
             if (elements.avgEnergyValue) elements.avgEnergyValue.textContent = data.avgEnergy;
             if (elements.progressCircle) elements.progressCircle.style.setProperty('--progress-value', `${data.efficiency}%`);
@@ -2295,8 +2311,8 @@ if ('serviceWorker' in navigator) {
             const dashboardTab = document.querySelector('#dashboard-tabs .tab-button[data-period="daily"]');
             if (dashboardTab) updateDashboardContent('daily', dashboardTab);
 
-            const operateTab = document.querySelector('#operate-tabs .tab-button[data-mode="setup"]');
-            if (operateTab) updateOperateContent('setup', operateTab);
+            const operateTab = document.querySelector('#operate-tabs .tab-button[data-mode="auto"]');
+            if (operateTab) updateOperateContent('auto', operateTab);
 
             updateAutoStatusUI();
 
@@ -2325,10 +2341,7 @@ if ('serviceWorker' in navigator) {
             }, splashScreenDuration);
         });
 
-        // Initialize the default tab
-        document.addEventListener('DOMContentLoaded', () => {
-            updateOperateContent('auto', document.querySelector('.tab-button[data-mode="auto"]'));
-        });
+        // Initialize the default tab - removed duplicate DOMContentLoaded listener
     </script>
 </body>
 </html>
