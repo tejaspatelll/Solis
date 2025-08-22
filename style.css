@@ -1706,14 +1706,17 @@
         }
 
         .demo-controls {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 2001;
             display: flex;
-            justify-content: space-between;
+            gap: 12px;
             align-items: center;
+            justify-content: center;
+            width: auto;
+            max-width: 90vw;
             pointer-events: auto;
         }
 
