@@ -374,6 +374,7 @@ if ('serviceWorker' in navigator) {
                 this.highlight = document.getElementById('demo-highlight');
                 this.tooltip = document.getElementById('demo-tooltip');
                 this.interactionPrompt = document.getElementById('demo-interaction-prompt');
+                this.highlightHideTimeout = null;
                 
                 // Bind methods
                 this.skipDemo = this.skipDemo.bind(this);
@@ -671,23 +672,30 @@ if ('serviceWorker' in navigator) {
             
             actionHighlight(selector) {
                 const element = document.querySelector(selector);
-                if (!element) return;
-                
-                const rect = element.getBoundingClientRect();
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-                
-                if (!this.highlight) return;
-                this.highlight.style.left = (rect.left + scrollLeft - 5) + 'px';
-                this.highlight.style.top = (rect.top + scrollTop - 5) + 'px';
-                this.highlight.style.width = (rect.width + 10) + 'px';
-                this.highlight.style.height = (rect.height + 10) + 'px';
-                this.highlight.classList.add('active');
-                
-                // Hide highlight after duration
-                setTimeout(() => {
-                    if (this.highlight) this.highlight.classList.remove('active');
-                }, 800);
+                if (!element || !this.highlight) return;
+
+                // Ensure target is smoothly in view first
+                this.scrollElementIntoView(element, { block: 'center', padding: 120 });
+
+                // Allow scroll to settle, then position using viewport rect (fixed positioning)
+                const padding = 6; // subtle padding around target
+                if (this.highlightHideTimeout) {
+                    clearTimeout(this.highlightHideTimeout);
+                    this.highlightHideTimeout = null;
+                }
+                requestAnimationFrame(() => {
+                    const rect = element.getBoundingClientRect();
+                    this.highlight.style.left = (rect.left - padding) + 'px';
+                    this.highlight.style.top = (rect.top - padding) + 'px';
+                    this.highlight.style.width = (rect.width + padding * 2) + 'px';
+                    this.highlight.style.height = (rect.height + padding * 2) + 'px';
+                    this.highlight.classList.add('active');
+
+                    // Hide highlight after a moment to avoid flicker between steps
+                    this.highlightHideTimeout = setTimeout(() => {
+                        if (this.highlight) this.highlight.classList.remove('active');
+                    }, 1100);
+                });
             }
             
             actionTransition(from, to) {
