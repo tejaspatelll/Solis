@@ -11,9 +11,9 @@
     <style>
         /* --- CSS Variables --- */
         :root {
-            /* Original Solar Green Palette */
-            --bg-primary: #ffffff00;
-            --bg-secondary: rgba(238, 241, 237, 0.0);
+         /* Modern Color Palette */
+            --bg-primary: #F9FAF8;
+            --bg-secondary: rgba(238, 241, 237, 0.8);
             --bg-card: rgba(255, 255, 255, 0.95);
             --bg-overlay: rgba(0, 0, 0, 0.4);
             --bg-modal: rgba(255, 255, 255, 0.98);
@@ -101,7 +101,7 @@
 
         /* --- Basic Reset & Global Styles --- */
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-        html, body { height: 100%; font-family: var(--font-family); background-color: var(--bg-secondary); display: flex; justify-content: center; align-items: center; color: var(--text-secondary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html, body { height: 100%; font-family: var(--font-family); background-color: transparent; display: flex; justify-content: center; align-items: center; color: var(--text-secondary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
             /* --- App Container --- */
     .app-container {
@@ -109,7 +109,7 @@
         height: 100%; /* Make it full height */
         max-width: 390px; /* iPhone width */
         max-height: 844px; /* iPhone height */
-        background-color: var(--bg-primary);
+        background-color: transparent;
         border-radius: 0; /* Remove border radius */
         box-shadow: none; /* Remove shadow */
         overflow: auto; /* Enable scrolling if content overflows */
@@ -121,7 +121,7 @@
     }
 
     /* Apply iPhone styling only on larger screens */
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
         .app-container {
             width: 390px;
             height: 844px;
@@ -130,6 +130,8 @@
             border: 14px solid #1C1C1E;
             backdrop-filter: blur(20px);
             overflow: hidden; /* Keep overflow hidden for iPhone look */
+            transform: scale(0.7);
+            transform-origin:  center;
         }
     }
 
@@ -148,7 +150,7 @@
     }
 
     /* Hide the notch on smaller screens */
-    @media (max-width: 767px) {
+    @media (max-width: 399px) {
         .app-container::before {
             display: none;
         }
@@ -388,7 +390,7 @@
 
         /* Splash Screen - Styles remain similar */
         #splash-screen { justify-content: center; align-items: center; padding-top: 60px; background-color: var(--bg-primary); }
-        .splash-graphic { width: 280px; height: 280px; background-color: var(--bg-secondary); border-radius: 50%; margin-bottom: 40px; display: flex; justify-content: center; align-items: center; font-size: 1.2em; color: var(--text-muted); font-style: italic; background-image: url("2.png"); background-size: 75%; background-repeat: no-repeat; background-position: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); animation: pulse 2s infinite; }
+        .splash-graphic { width: 280px; height: 280px; background-color: var(--bg-secondary); border-radius: 50%; margin-bottom: 40px; display: flex; justify-content: center; align-items: center; font-size: 1.2em; color: var(--text-muted); font-style: italic; background-image: url("https://static.wixstatic.com/media/de9e58_0330a7b081234f65bc21b69012641f18~mv2.png"); background-size: 75%; background-repeat: no-repeat; background-position: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); animation: pulse 2s infinite; }
         .splash-title { font-size: 3.2em; font-weight: 700; color: var(--text-secondary); letter-spacing: 2px; margin-bottom: auto; }
         .loading-icon { margin-top: auto; margin-bottom: 60px; animation: spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
         .loading-icon svg { width: 36px; height: 36px; color: var(--text-accent); }
@@ -509,7 +511,7 @@
         .operate-card { display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
         .operate-card:hover { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); }
         .operate-card:active { transform: scale(0.98); }
-        .operate-card .device-icon-small { width: 60px; height: 60px; background-color: var(--bg-secondary); border-radius: 14px; background-image: url("2.png"); background-size: 65%; background-repeat: no-repeat; background-position: center; flex-shrink: 0; }
+        .operate-card .device-icon-small { width: 60px; height: 60px; background-color: var(--bg-secondary); border-radius: 14px; background-image: url("https://static.wixstatic.com/media/de9e58_0330a7b081234f65bc21b69012641f18~mv2.png"); background-size: 65%; background-repeat: no-repeat; background-position: center; flex-shrink: 0; }
         .operate-card .text { margin-left: 18px; flex-grow: 1;}
         .operate-card .text h3 { margin-bottom: 3px;}
         .operate-card .arrow { color: var(--text-muted); }
@@ -554,7 +556,7 @@
 
         /* Operate Screen - Styles remain similar, adjustments within content */
         #operate-screen .device-info { display: flex; align-items: center; gap: 25px; margin-bottom: 30px; }
-        #operate-screen .device-icon-large { width: 95px; height: 95px; background-color: var(--bg-secondary); border-radius: 18px; flex-shrink: 0; background-image: url("2.png"); background-size: 70%; background-repeat: no-repeat; background-position: center; }
+        #operate-screen .device-icon-large { width: 95px; height: 95px; background-color: var(--bg-secondary); border-radius: 18px; flex-shrink: 0; background-image: url("https://static.wixstatic.com/media/de9e58_0330a7b081234f65bc21b69012641f18~mv2.png"); background-size: 70%; background-repeat: no-repeat; background-position: center; }
         #operate-screen .last-cleaned-info .label { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 3px;}
         #operate-screen .last-cleaned-info .date { font-size: 1.3em; font-weight: 600; color: var(--text-primary); margin-bottom: 10px;}
         #operate-screen .last-cleaned-info .time { font-size: 1.05em; font-weight: 500; color: var(--text-primary);}
@@ -1692,6 +1694,243 @@
         .cleaning-button:active {
             transform: scale(0.98); /* Press effect */
         }
+
+        /* --- DEMO SYSTEM STYLES --- */
+        .demo-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.05);
+            z-index: 2000;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .demo-overlay.active {
+            opacity: 1;
+        }
+
+        .demo-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 2001;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: auto;
+        }
+
+        .demo-progress-container {
+            flex-grow: 1;
+            margin-right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 16px;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(163, 193, 173, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .demo-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #A3C1AD, #7BA08D);
+            width: 0%;
+            transition: width 1s linear;
+            border-radius: 2px;
+        }
+
+        .demo-progress-text {
+            font-size: 0.85em;
+            color: var(--text-primary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .demo-skip-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-skip-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .demo-highlight {
+            position: absolute;
+            pointer-events: none;
+            border: 3px solid #A3C1AD;
+            border-radius: 12px;
+            box-shadow: 0 0 0 4px rgba(163, 193, 173, 0.2), 0 0 20px rgba(163, 193, 173, 0.3);
+            z-index: 1999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: demoHighlightPulse 2s infinite;
+        }
+
+        .demo-highlight.active {
+            opacity: 1;
+        }
+
+        @keyframes demoHighlightPulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 4px rgba(163, 193, 173, 0.2), 0 0 20px rgba(163, 193, 173, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 0 8px rgba(163, 193, 173, 0.4), 0 0 30px rgba(163, 193, 173, 0.5);
+            }
+        }
+
+        .demo-tooltip {
+            position: absolute;
+            background: rgba(28, 28, 30, 0.95);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 500;
+            z-index: 2002;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            max-width: 200px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-tooltip.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .demo-tooltip::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid rgba(28, 28, 30, 0.95);
+        }
+
+        .demo-interaction-prompt {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 24px 32px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            z-index: 2003;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .demo-interaction-prompt.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .demo-interaction-prompt h3 {
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+
+        .demo-interaction-prompt p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .demo-interaction-prompt .btn {
+            width: auto;
+            margin: 0 8px;
+        }
+
+        /* Demo-specific animations */
+        @keyframes demoFadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes demoScaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes demoSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .demo-animate-fadeInUp {
+            animation: demoFadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .demo-animate-scaleIn {
+            animation: demoScaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .demo-animate-slideIn {
+            animation: demoSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Smooth scrolling override for demo */
+        .demo-smooth-scroll {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body id="app-body"> <!-- Added ID for dark mode toggling -->
@@ -2335,6 +2574,35 @@
  </div>  
  <!--  End App Container -->
 
+<!-- Demo System HTML -->
+<div id="demo-overlay" class="demo-overlay">
+    <div class="demo-controls">
+        <div class="demo-progress-container">
+            <div class="demo-progress-bar">
+                <div id="demo-progress-fill" class="demo-progress-fill"></div>
+            </div>
+            <div class="demo-progress-text">
+                <span id="demo-current-step">Solis Demo</span>
+                <span id="demo-time-remaining">60s</span>
+            </div>
+        </div>
+        <button id="demo-skip-btn" class="demo-skip-btn" onclick="demoController.skipDemo()">
+            Skip Demo
+        </button>
+    </div>
+</div>
+
+<div id="demo-highlight" class="demo-highlight"></div>
+
+<div id="demo-tooltip" class="demo-tooltip"></div>
+
+<div id="demo-interaction-prompt" class="demo-interaction-prompt">
+    <h3>Take Control?</h3>
+    <p>You can interact with the app now or continue watching the demo</p>
+    <button class="btn btn-secondary" onclick="demoController.continueDemo()">Continue Demo</button>
+    <button class="btn" onclick="demoController.takeControl()">Take Control</button>
+</div>
+
     <script>
 
 
@@ -2350,6 +2618,11 @@ if ('serviceWorker' in navigator) {
         let isNavOpen = false;
         let isAutoCleaningPaused = false;
         let isAnimatingString = false;
+
+        // --- DEMO SYSTEM VARIABLES ---
+        let demoController = null;
+        let isDemoActive = false;
+        let userInteracted = false;
 
         // Simple storage for settings (resets on reload)
         let appSettings = {
@@ -2687,6 +2960,448 @@ if ('serviceWorker' in navigator) {
              }, 1200);
          }
 
+        // --- DEMO SYSTEM IMPLEMENTATION ---
+        class SolisDemoController {
+            constructor() {
+                this.isActive = false;
+                this.currentStep = 0;
+                this.totalSteps = 60;
+                this.stepDuration = 1000; // 1 second per step
+                this.userInteracted = false;
+                this.timeoutId = null;
+                this.startTime = null;
+                
+                // Demo elements
+                this.overlay = document.getElementById('demo-overlay');
+                this.progressFill = document.getElementById('demo-progress-fill');
+                this.currentStepText = document.getElementById('demo-current-step');
+                this.timeRemaining = document.getElementById('demo-time-remaining');
+                this.highlight = document.getElementById('demo-highlight');
+                this.tooltip = document.getElementById('demo-tooltip');
+                this.interactionPrompt = document.getElementById('demo-interaction-prompt');
+                
+                // Bind methods
+                this.skipDemo = this.skipDemo.bind(this);
+                this.takeControl = this.takeControl.bind(this);
+                this.continueDemo = this.continueDemo.bind(this);
+                
+                this.initializeSteps();
+                this.setupInteractionDetection();
+            }
+            
+            initializeSteps() {
+                this.steps = [
+                    // Phase 1: Splash & Introduction (0-8 seconds)
+                    { action: 'showScreen', target: 'splash-screen', description: 'Welcome to Solis!', duration: 1000 },
+                    { action: 'highlight', target: '.splash-graphic', description: 'Smart solar panel cleaner', duration: 1000 },
+                    { action: 'transition', from: 'splash-screen', to: 'signup-screen', description: 'Quick signup process', duration: 1000 },
+                    { action: 'highlight', target: '.signup-illustration', description: 'Easy setup', duration: 1000 },
+                    { action: 'fillForm', target: 'signup', description: 'Auto-filled demo data', duration: 1000 },
+                    { action: 'transition', from: 'signup-screen', to: 'dashboard-screen', description: 'Welcome to your dashboard', duration: 1000 },
+                    { action: 'highlight', target: '.app-header h2', description: 'Personalized greeting', duration: 1000 },
+                    { action: 'highlight', target: '.welcome-text', description: 'Solar performance overview', duration: 1000 },
+                    
+                    // Phase 2: Dashboard Exploration (8-20 seconds)
+                    { action: 'highlight', target: '.power-analysis-card', description: 'Real-time efficiency tracking', duration: 1000 },
+                    { action: 'animateProgress', target: '.progress-circle', description: '78.8% efficiency today', duration: 1000 },
+                    { action: 'scrollTo', target: '.stats-grid', description: 'Performance statistics', duration: 1000 },
+                    { action: 'highlight', target: '.mini-card:first-child', description: '147 total cleanings', duration: 1000 },
+                    { action: 'highlight', target: '.mini-card:last-child', description: 'Average 28-minute cycles', duration: 1000 },
+                    { action: 'scrollTo', target: '.maintenance-card', description: 'System health monitoring', duration: 1000 },
+                    { action: 'highlight', target: '.water-level-card', description: '75% water level remaining', duration: 1000 },
+                    { action: 'animateWaterLevel', target: '.water-level-fill', description: '12 more cleanings possible', duration: 1000 },
+                    { action: 'scrollTo', target: '.weather-card', description: 'Weather integration', duration: 1000 },
+                    { action: 'highlight', target: '.weather-info', description: 'Perfect cleaning conditions', duration: 1000 },
+                    { action: 'scrollTo', target: '.operate-card', description: 'Device control center', duration: 1000 },
+                    { action: 'clickElement', target: '.operate-card', description: 'Accessing control panel', duration: 1000 },
+                    
+                    // Phase 3: Interactive Features (20-35 seconds)
+                    { action: 'highlight', target: '.device-status-card', description: 'Device status overview', duration: 1000 },
+                    { action: 'highlight', target: '.quick-stats', description: 'Key metrics at a glance', duration: 1000 },
+                    { action: 'clickTab', target: '[data-mode="setup"]', description: 'Setup configuration', duration: 1000 },
+                    { action: 'highlight', target: '.scan-graphic', description: 'Panel tension control', duration: 1000 },
+                    { action: 'animateStrings', type: 'tightening', description: 'Adjusting string tension', duration: 1000 },
+                    { action: 'highlight', target: '.panel-inputs', description: 'Panel specifications', duration: 1000 },
+                    { action: 'clickTab', target: '[data-mode="manual"]', description: 'Manual control mode', duration: 1000 },
+                    { action: 'highlight', target: '.d-pad', description: 'Directional controls', duration: 1000 },
+                    { action: 'demoControls', target: '.d-pad-btn.up', description: 'Movement simulation', duration: 1000 },
+                    { action: 'highlight', target: '.cleaning-controls', description: 'Cleaning settings', duration: 1000 },
+                    { action: 'adjustSlider', target: '#brush-pressure', description: 'Brush pressure control', duration: 1000 },
+                    { action: 'clickTab', target: '[data-mode="auto"]', description: 'Automatic mode', duration: 1000 },
+                    { action: 'highlight', target: '.status-indicator', description: 'Scheduled cleaning', duration: 1000 },
+                    { action: 'highlight', target: '.next-clean-info', description: 'Next cleaning: Tomorrow 5 AM', duration: 1000 },
+                    { action: 'clickElement', target: '#clean-now-btn', description: 'Starting immediate clean', duration: 1000 },
+                    
+                    // Phase 4: Advanced Features (35-50 seconds)
+                    { action: 'showCleaningProgress', description: 'Cleaning in progress...', duration: 1000 },
+                    { action: 'highlight', target: '.cleaning-pattern', description: 'Zigzag cleaning pattern', duration: 1000 },
+                    { action: 'scrollTo', target: '.history-card', description: 'Cleaning history', duration: 1000 },
+                    { action: 'openSideNav', description: 'Navigation menu', duration: 1000 },
+                    { action: 'highlight', target: '#nav-settings', description: 'Settings & preferences', duration: 1000 },
+                    { action: 'clickElement', target: '#nav-settings', description: 'Opening settings', duration: 1000 },
+                    { action: 'highlight', target: '.settings-group:first-child', description: 'Notification preferences', duration: 1000 },
+                    { action: 'toggleSetting', target: '#dark-mode-toggle', description: 'Dark mode toggle', duration: 1000 },
+                    { action: 'highlight', target: '.settings-group:last-child', description: 'Account & support', duration: 1000 },
+                    { action: 'navigateBack', description: 'Back to dashboard', duration: 1000 },
+                    
+                    // Phase 5: Dashboard Features (50-60 seconds)
+                    { action: 'clickTab', target: '[data-period="weekly"]', description: 'Weekly performance', duration: 1000 },
+                    { action: 'updateDashboard', period: 'weekly', description: 'Weekly energy data', duration: 1000 },
+                    { action: 'clickTab', target: '[data-period="monthly"]', description: 'Monthly overview', duration: 1000 },
+                    { action: 'updateDashboard', period: 'monthly', description: 'Monthly statistics', duration: 1000 },
+                    { action: 'scrollTo', target: '.energy-card', description: 'Energy production metrics', duration: 1000 },
+                    { action: 'highlight', target: '.power-analysis-card', description: 'Efficiency optimization', duration: 1000 },
+                    { action: 'showTooltip', text: 'AI-powered cleaning schedules optimize your solar efficiency', description: 'Smart automation', duration: 1000 },
+                    { action: 'highlight', target: '.operate-card', description: 'Full device control', duration: 1000 },
+                    { action: 'showTooltip', text: 'Remote operation from anywhere in the world', description: 'Remote access', duration: 1000 },
+                    { action: 'fadeOut', description: 'Demo complete!', duration: 1000 }
+                ];
+            }
+            
+            setupInteractionDetection() {
+                const events = ['click', 'touchstart', 'keydown', 'scroll'];
+                events.forEach(event => {
+                    document.addEventListener(event, (e) => {
+                        if (this.isActive && !this.userInteracted && !e.target.closest('.demo-controls, .demo-interaction-prompt')) {
+                            this.handleUserInteraction(e);
+                        }
+                    });
+                });
+            }
+            
+            handleUserInteraction(event) {
+                if (this.userInteracted) return;
+                
+                this.userInteracted = true;
+                this.showInteractionPrompt();
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            showInteractionPrompt() {
+                this.interactionPrompt.classList.add('active');
+            }
+            
+            hideInteractionPrompt() {
+                this.interactionPrompt.classList.remove('active');
+            }
+            
+            continueDemo() {
+                this.userInteracted = false;
+                this.hideInteractionPrompt();
+                this.executeNextStep();
+            }
+            
+            takeControl() {
+                this.skipDemo();
+            }
+            
+            start() {
+                if (this.isActive) return;
+
+                this.isActive = true;
+                this.currentStep = 0;
+                this.startTime = Date.now();
+                this.userInteracted = false;
+                
+                // Show demo overlay
+                if (this.overlay) this.overlay.classList.add('active');
+                document.body.classList.add('demo-smooth-scroll');
+                
+                // Start the demo sequence
+                this.executeStep(0);
+            }
+            
+            executeStep(stepIndex) {
+                if (!this.isActive || stepIndex >= this.steps.length) {
+                    this.finish();
+                    return;
+                }
+                
+                const step = this.steps[stepIndex];
+                this.currentStep = stepIndex;
+                
+                // Update progress
+                this.updateProgress();
+                
+                // Execute the step action
+                this.performAction(step);
+                
+                // Schedule next step
+                this.timeoutId = setTimeout(() => {
+                    if (this.isActive && !this.userInteracted) {
+                        this.executeStep(stepIndex + 1);
+                    }
+                }, step.duration);
+            }
+            
+            executeNextStep() {
+                if (this.timeoutId) {
+                    clearTimeout(this.timeoutId);
+                }
+                this.executeStep(this.currentStep + 1);
+            }
+            
+            updateProgress() {
+                const progress = (this.currentStep / this.totalSteps) * 100;
+                const timeElapsed = Date.now() - this.startTime;
+                const timeRemaining = Math.max(0, 60 - Math.floor(timeElapsed / 1000));
+
+                if (this.progressFill) this.progressFill.style.width = `${progress}%`;
+                if (this.currentStepText) this.currentStepText.textContent = (this.steps[this.currentStep] && this.steps[this.currentStep].description) || 'Solis Demo';
+                if (this.timeRemaining) this.timeRemaining.textContent = `${timeRemaining}s`;
+            }
+            
+            performAction(step) {
+                switch (step.action) {
+                    case 'showScreen':
+                        this.actionShowScreen(step.target);
+                        break;
+                    case 'highlight':
+                        this.actionHighlight(step.target);
+                        break;
+                    case 'transition':
+                        this.actionTransition(step.from, step.to);
+                        break;
+                    case 'scrollTo':
+                        this.actionScrollTo(step.target);
+                        break;
+                    case 'clickElement':
+                        this.actionClickElement(step.target);
+                        break;
+                    case 'clickTab':
+                        this.actionClickTab(step.target);
+                        break;
+                    case 'fillForm':
+                        this.actionFillForm();
+                        break;
+                    case 'animateProgress':
+                        this.actionAnimateProgress();
+                        break;
+                    case 'animateWaterLevel':
+                        this.actionAnimateWaterLevel();
+                        break;
+                    case 'animateStrings':
+                        this.actionAnimateStrings(step.type);
+                        break;
+                    case 'demoControls':
+                        this.actionDemoControls(step.target);
+                        break;
+                    case 'adjustSlider':
+                        this.actionAdjustSlider(step.target);
+                        break;
+                    case 'showCleaningProgress':
+                        this.actionShowCleaningProgress();
+                        break;
+                    case 'openSideNav':
+                        this.actionOpenSideNav();
+                        break;
+                    case 'toggleSetting':
+                        this.actionToggleSetting(step.target);
+                        break;
+                    case 'navigateBack':
+                        this.actionNavigateBack();
+                        break;
+                    case 'updateDashboard':
+                        this.actionUpdateDashboard(step.period);
+                        break;
+                    case 'showTooltip':
+                        this.actionShowTooltip(step.text);
+                        break;
+                    case 'fadeOut':
+                        this.actionFadeOut();
+                        break;
+                }
+            }
+            
+            // Action implementations
+            actionShowScreen(screenId) {
+                showScreen(screenId);
+            }
+            
+            actionHighlight(selector) {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                
+                const rect = element.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                
+                if (!this.highlight) return;
+                this.highlight.style.left = (rect.left + scrollLeft - 5) + 'px';
+                this.highlight.style.top = (rect.top + scrollTop - 5) + 'px';
+                this.highlight.style.width = (rect.width + 10) + 'px';
+                this.highlight.style.height = (rect.height + 10) + 'px';
+                this.highlight.classList.add('active');
+                
+                // Hide highlight after duration
+                setTimeout(() => {
+                    if (this.highlight) this.highlight.classList.remove('active');
+                }, 800);
+            }
+            
+            actionTransition(from, to) {
+                showScreen(to);
+            }
+            
+            actionScrollTo(selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+            
+            actionClickElement(selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    // Highlight first
+                    this.actionHighlight(selector);
+                    // Then click after brief delay
+                    setTimeout(() => {
+                        element.click();
+                    }, 300);
+                }
+            }
+            
+            actionClickTab(selector) {
+                const tab = document.querySelector(selector);
+                if (tab) {
+                    this.actionHighlight(selector);
+                    setTimeout(() => {
+                        tab.click();
+                    }, 300);
+                }
+            }
+            
+            actionFillForm() {
+                // Forms are already pre-filled in the HTML
+                this.actionHighlight('.input-field:first-child');
+            }
+            
+            actionAnimateProgress() {
+                const circle = document.querySelector('.progress-circle');
+                if (circle) {
+                    circle.style.setProperty('--progress-value', '78.8%');
+                }
+            }
+            
+            actionAnimateWaterLevel() {
+                const fill = document.querySelector('.water-level-fill');
+                if (fill) {
+                    fill.style.width = '75%';
+                }
+            }
+            
+            actionAnimateStrings(type) {
+                if (typeof triggerStringAnimation === 'function') {
+                    triggerStringAnimation(type);
+                }
+            }
+            
+            actionDemoControls(selector) {
+                const btn = document.querySelector(selector);
+                if (btn) {
+                    this.actionHighlight(selector);
+                    btn.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        btn.style.transform = '';
+                    }, 200);
+                }
+            }
+            
+            actionAdjustSlider(selector) {
+                const slider = document.querySelector(selector);
+                if (slider) {
+                    this.actionHighlight(selector);
+                    slider.value = 4;
+                    const event = new Event('input');
+                    slider.dispatchEvent(event);
+                }
+            }
+            
+            actionShowCleaningProgress() {
+                const indicator = document.querySelector('#auto-status-indicator');
+                if (indicator) {
+                    indicator.className = 'status-indicator running';
+                    indicator.textContent = 'Running';
+                }
+            }
+            
+            actionOpenSideNav() {
+                const hamburger = document.querySelector('.hamburger-menu');
+                if (hamburger) {
+                    hamburger.click();
+                }
+            }
+            
+            actionToggleSetting(selector) {
+                const toggle = document.querySelector(selector);
+                if (toggle) {
+                    this.actionHighlight(selector);
+                    setTimeout(() => {
+                        toggle.click();
+                    }, 300);
+                }
+            }
+            
+            actionNavigateBack() {
+                const backBtn = document.querySelector('.back-arrow');
+                if (backBtn) {
+                    backBtn.click();
+                } else {
+                    showScreen('dashboard-screen');
+                }
+            }
+            
+            actionUpdateDashboard(period) {
+                const tab = document.querySelector(`[data-period="${period}"]`);
+                if (tab && typeof updateDashboardContent === 'function') {
+                    updateDashboardContent(period, tab);
+                }
+            }
+            
+            actionShowTooltip(text) {
+                if (!this.tooltip) return;
+                this.tooltip.textContent = text;
+                this.tooltip.style.left = '50%';
+                this.tooltip.style.top = '50%';
+                this.tooltip.style.transform = 'translate(-50%, -50%)';
+                this.tooltip.classList.add('active');
+                
+                setTimeout(() => {
+                    if (this.tooltip) this.tooltip.classList.remove('active');
+                }, 2000);
+            }
+            
+            actionFadeOut() {
+                this.finish();
+            }
+            
+            skipDemo() {
+                this.finish();
+            }
+            
+            finish() {
+                this.isActive = false;
+                this.userInteracted = false;
+                
+                if (this.timeoutId) {
+                    clearTimeout(this.timeoutId);
+                }
+                
+                // Hide all demo elements
+                if (this.overlay) this.overlay.classList.remove('active');
+                if (this.highlight) this.highlight.classList.remove('active');
+                if (this.tooltip) this.tooltip.classList.remove('active');
+                if (this.interactionPrompt) this.hideInteractionPrompt();
+                
+                document.body.classList.remove('demo-smooth-scroll');
+                
+                // Reset to dashboard
+                showScreen('dashboard-screen');
+            }
+        }
+
         // --- Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize DOM element references
@@ -2734,11 +3449,87 @@ if ('serviceWorker' in navigator) {
                 wifiStatusText.textContent = appSettings.wifiNetwork ? 'Connected' : 'Not Connected';
             }
 
-             // Splash transition
-            setTimeout(() => {
-                showScreen('signup-screen');
-            }, splashScreenDuration);
+            // Initialize Demo Controller
+            demoController = new SolisDemoController();
+            
+            // Check if demo should auto-start (for embedding)
+            const urlParams = new URLSearchParams(window.location.search);
+            const autoDemo = urlParams.get('demo') === 'auto';
+            
+            if (autoDemo) {
+                // Auto-start demo after brief delay
+                setTimeout(() => {
+                    demoController.start();
+                }, 1000);
+            } else {
+                // Normal app flow - add demo start button
+                addDemoStartButton();
+                
+                // Splash transition
+                setTimeout(() => {
+                    showScreen('signup-screen');
+                    
+                    // Auto-skip signup page after 1 second and go to dashboard
+                    setTimeout(() => {
+                        showScreen('dashboard-screen');
+                    }, 1000);
+                }, splashScreenDuration);
+            }
         });
+        
+        // Add demo start button for manual demo activation
+        function addDemoStartButton() {
+            const demoBtn = document.createElement('button');
+            demoBtn.innerHTML = '▶️ Start Demo';
+            demoBtn.className = 'btn btn-secondary';
+            demoBtn.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                width: auto;
+                padding: 8px 16px;
+                font-size: 0.9em;
+                background: rgba(255, 255, 255, 0.95);
+                color: var(--text-primary);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            `;
+            demoBtn.onclick = () => {
+                demoBtn.style.display = 'none';
+                demoController.start();
+            };
+            document.body.appendChild(demoBtn);
+        }
+        
+        // Enhanced functions for demo interactions
+        function toggleBrush(button) {
+            if (!button) return;
+            const isActive = button.textContent.includes('Stop');
+            button.innerHTML = isActive ? 
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>Start Brush' :
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h12v12H6z"/></svg>Stop Brush';
+        }
+        
+        function toggleWater(button) {
+            if (!button) return;
+            const isActive = button.textContent.includes('Stop');
+            button.innerHTML = isActive ? 
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8z"/></svg>Start Spray' :
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h12v12H6z"/></svg>Stop Spray';
+        }
+        
+        function saveConfiguration(button) {
+            simulateSave(button);
+        }
+        
+        // Global demo API for external access
+        window.SolisDemo = {
+            start: () => demoController?.start(),
+            skip: () => demoController?.skipDemo(),
+            isActive: () => demoController?.isActive || false,
+            controller: () => demoController
+        };
 
 
     </script>
